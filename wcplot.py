@@ -21,7 +21,7 @@ def data_real(path):
     d = json.load(open(path, "r"))
     dts = {}
     for x in d:
-        dt = datetime.datetime.strptime(x["date"], "%d/%m/%Y")
+        dt = datetime.datetime.strptime(x["date"], "%Y-%m-%d %H-%M-%S %z")
         if isinstance(x["result"], basestring):
             val = int(x["result"])
             if not dt in dts or val > dts[dt]: dts[dt] = val
@@ -39,7 +39,7 @@ def plot(data):
     monthdays2 = mdates.DayLocator(bymonthday = (1,))
     mondays    = mdates.WeekdayLocator(byweekday=MONDAY)
     alldays    = DayLocator()              # minor ticks on the days
-    weekFormatter = DateFormatter('%d/%m/%Y')  # Eg, Jan 12
+    weekFormatter = DateFormatter('%d.%m.%Y')  # Eg, Jan 12
     dayFormatter = DateFormatter('%d')      # Eg, 12
 
     # load a numpy record array from yahoo csv data with fields date,

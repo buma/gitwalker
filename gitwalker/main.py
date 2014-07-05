@@ -82,7 +82,7 @@ def main():
         for idx, comm in enumerate(process):
             sha1 = comm["commit"]
             rec = {
-                "date" : comm["date"].strftime("%d/%m/%Y"),
+                "date" : comm["date"].strftime("%Y-%m-%d %H-%M-%S %z"),
                 "author" : comm["author"]
                 }
             if sha1 in out and "results" in out[sha1]: rec["results"] = out[sha1]
